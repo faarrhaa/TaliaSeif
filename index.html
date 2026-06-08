@@ -81,7 +81,7 @@ body{
 
 /* ── ANTIQUE LETTER SCROLL (CLOSED) ── */
 .scroll-card{
-  width:clamp(110px, 28vw, 160px);
+  width:clamp(85px, 26vw, 160px); /* Adjusted to perfectly fit 3 across on small mobiles */
   cursor:pointer;
   position:relative;
   margin:0 auto 14px;
@@ -130,15 +130,15 @@ body{
   top:50%;
   left:50%;
   transform:translate(-50%, -50%);
-  width:clamp(48px, 12vw, 64px);
-  height:clamp(48px, 12vw, 64px);
+  width:clamp(40px, 12vw, 64px); /* Adjusted for mobile */
+  height:clamp(40px, 12vw, 64px); /* Adjusted for mobile */
   background:radial-gradient(circle at 35% 35%, #d94461, var(--ruby), #5a0f1c);
   border-radius:50%;
   border:2px dashed rgba(255,255,255,.3);
   box-shadow:0 4px 12px rgba(0,0,0,.5), inset 0 -2px 6px rgba(0,0,0,.4);
   z-index:4;
   display:flex;align-items:center;justify-content:center;
-  font-family:'Cinzel',serif;color:rgba(255,255,255,.8);font-size:9px;letter-spacing:1px;
+  font-family:'Cinzel',serif;color:rgba(255,255,255,.8);font-size:clamp(7px, 2vw, 9px);letter-spacing:1px; /* Adjusted for mobile */
   text-shadow:0 1px 2px rgba(0,0,0,.6);
   transition:opacity 0.4s ease, transform 0.4s ease;
 }
@@ -152,7 +152,7 @@ body{
   color:var(--dark);
   line-height:1;
   font-weight:700;
-  font-size:clamp(32px, 8vw, 52px);
+  font-size:clamp(24px, 8vw, 52px); /* Adjusted for mobile */
   opacity:0;
   transform:translateY(10px);
   transition:opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
@@ -162,7 +162,7 @@ body{
   transform:translateY(0);
 }
 
-.flip-hint{margin-top:10px;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-family:'Cinzel',serif;animation:shimmerGold 2.5s ease-in-out infinite;text-align:center;}
+.flip-hint{margin-top:10px;font-size:clamp(8px, 2vw, 10px);letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-family:'Cinzel',serif;animation:shimmerGold 2.5s ease-in-out infinite;text-align:center;}
 
 /* ── CINEMATIC COUNTDOWN ┐ */
 .cinematic-timeline-wrapper{display:flex;align-items:center;gap:16px;width:100%;max-width:480px;margin:30px auto;}
@@ -218,7 +218,6 @@ body{
 .ending-quote{font-family:'Playfair Display',Georgia,serif;font-size:clamp(18px,4vw,30px);color:var(--dark);font-style:italic;max-width:580px;line-height:1.9;opacity:0;transform:translateY(20px);transition:opacity 2s ease,transform 2s ease;z-index:2;text-shadow:0 1px 4px rgba(255,255,255,.5);}
 #cinematic-ending.revealed .ending-quote{opacity:1;transform:translateY(0);}
 
-@media(max-width:600px){.venue-hero{min-height:420px;}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;}.petal,.confetti-piece,#shooting-stars-container,.ending-stars>div,.ending-particles>div,#venue-petals>div{display:none!important;}}
 </style>
 </head>
@@ -236,7 +235,6 @@ body{
   </div>
 </div>
 
-<!-- ══ UPDATED AUDIO SOURCES ══ -->
 <audio id="bgm" loop preload="auto">
   <source src="lux.m4a" type="audio/mp4">
   <source src="lux.mp3" type="audio/mpeg">
@@ -315,7 +313,7 @@ body{
   <section class="reveal-section" style="text-align:center;padding:40px 0;">
     <p class="reveal-child reveal-delay-1 tagline" style="color:var(--gold);margin-bottom:24px;">Break the seal to reveal the date</p>
     
-    <div class="reveal-child reveal-delay-2" style="display:flex; justify-content:center; gap:clamp(18px, 5vw, 40px); flex-wrap:wrap; margin:20px 0; align-items: flex-start;">
+    <div class="reveal-child reveal-delay-2" style="display:flex; justify-content:center; gap:clamp(10px, 3vw, 40px); flex-wrap:nowrap; margin:20px 0; align-items: flex-start;">
       
       <!-- DAY -->
       <div style="text-align:center;">
@@ -335,7 +333,7 @@ body{
         <div class="scroll-card" onclick="this.classList.toggle('opened')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('opened')" aria-label="Reveal Month">
           <div class="scroll-roller"></div>
           <div class="scroll-paper">
-            <div class="scroll-text" style="font-size:clamp(28px,7vw,46px);">10</div>
+            <div class="scroll-text" style="font-size:clamp(20px, 7vw, 46px);">10</div>
           </div>
           <div class="scroll-roller"></div>
           <div class="wax-seal">T&amp;S</div>
@@ -348,7 +346,7 @@ body{
         <div class="scroll-card" onclick="this.classList.toggle('opened')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('opened')" aria-label="Reveal Year">
           <div class="scroll-roller"></div>
           <div class="scroll-paper">
-            <div class="scroll-text" style="font-size:clamp(28px,7vw,46px);">2026</div>
+            <div class="scroll-text" style="font-size:clamp(20px, 7vw, 46px);">2026</div>
           </div>
           <div class="scroll-roller"></div>
           <div class="wax-seal">T&amp;S</div>
