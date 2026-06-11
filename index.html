@@ -378,6 +378,12 @@ body{
   animation:silkShimmer 4s ease-in-out infinite;
 }
 
+/* FIX: Mobile Wardrobe SVG scaling */
+.wi-figure svg {
+  max-height: clamp(130px, 34vw, 180px);
+  width: auto;
+}
+
 .wi-caption{
   position:absolute;
   bottom:40px;
@@ -514,8 +520,8 @@ body{
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: clamp(14px, 4vw, 28px);
-  flex-wrap: wrap;
+  gap: clamp(12px, 3.5vw, 28px);
+  flex-wrap: nowrap; /* Forces one line */
 }
 .swatch-item {
   display: flex;
@@ -524,8 +530,8 @@ body{
   gap: 10px;
 }
 .swatch-circle {
-  width: clamp(48px, 11vw, 66px);
-  height: clamp(48px, 11vw, 66px);
+  width: clamp(40px, 13vw, 66px);
+  height: clamp(40px, 13vw, 66px);
   border-radius: 50%;
   border: 2px solid rgba(184,134,11,.45);
   box-shadow: 0 6px 18px rgba(44,26,0,.18), inset 0 2px 4px rgba(255,255,255,.25);
@@ -537,8 +543,8 @@ body{
   box-shadow: 0 10px 24px rgba(44,26,0,.25), inset 0 2px 4px rgba(255,255,255,.3);
 }
 .swatch-gold {
-  width: clamp(60px, 13vw, 82px);
-  height: clamp(60px, 13vw, 82px);
+  width: clamp(52px, 15vw, 82px);
+  height: clamp(52px, 15vw, 82px);
   border-width: 2.5px;
   border-color: rgba(184,134,11,.7);
   box-shadow: 0 8px 24px rgba(184,134,11,.3), inset 0 2px 4px rgba(255,255,255,.3);
@@ -550,17 +556,19 @@ body{
 .swatch-label {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: clamp(11px, 2vw, 13px);
+  font-size: clamp(9px, 2.2vw, 13px);
   color: var(--brown);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  text-align: center;
 }
 .swatch-label-hero {
   color: var(--gold);
   font-weight: 600;
   font-family: 'Cinzel', serif;
   font-style: normal;
-  letter-spacing: 2px;
-  font-size: clamp(10px, 1.8vw, 12px);
+  letter-spacing: 1px;
+  font-size: clamp(9px, 1.8vw, 12px);
+  text-align: center;
 }
 .palette-note {
   margin-top: 24px;
@@ -574,8 +582,14 @@ body{
 @media(max-width:480px){
   .prog-entry{grid-template-columns:62px 1px 1fr;}
   .prog-hour{font-size:10px;}
-  .wi-caption-body{max-width:120px;font-size:11px;}
-  .wardrobe-shell{height:clamp(280px,75vw,380px);}
+  
+  /* Mobile Wardrobe Fixes */
+  .wardrobe-shell { height: clamp(300px, 110vw, 460px); }
+  .wi-panel { padding: 28px 4px 60px; }
+  .wi-figure svg { max-height: clamp(100px, 38vw, 140px); }
+  .wi-caption { bottom: 15px; }
+  .wi-caption-body { max-width: 110px; font-size: 10px; }
+  .wi-caption-title { font-size: 9px; letter-spacing: 2px; }
 }
 
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;}.petal,.confetti-piece,#shooting-stars-container,.ending-stars>div,.ending-particles>div,#venue-petals>div{display:none!important;}}
@@ -675,39 +689,30 @@ body{
     
     <div class="reveal-child reveal-delay-2" style="display:flex; justify-content:center; gap:clamp(10px, 3vw, 40px); flex-wrap:nowrap; margin:20px 0; align-items: flex-start;">
       
-      <!-- DAY -->
       <div style="text-align:center;">
         <div class="scroll-card" onclick="this.classList.toggle('opened')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('opened')" aria-label="Reveal Day">
           <div class="scroll-roller"></div>
-          <div class="scroll-paper">
-            <div class="scroll-text">26</div>
-          </div>
+          <div class="scroll-paper"><div class="scroll-text">26</div></div>
           <div class="scroll-roller"></div>
           <div class="wax-seal">T&amp;S</div>
         </div>
         <div class="flip-hint">Day</div>
       </div>
 
-      <!-- MONTH -->
       <div style="text-align:center;">
         <div class="scroll-card" onclick="this.classList.toggle('opened')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('opened')" aria-label="Reveal Month">
           <div class="scroll-roller"></div>
-          <div class="scroll-paper">
-            <div class="scroll-text" style="font-size:clamp(20px, 7vw, 46px);">10</div>
-          </div>
+          <div class="scroll-paper"><div class="scroll-text" style="font-size:clamp(20px, 7vw, 46px);">10</div></div>
           <div class="scroll-roller"></div>
           <div class="wax-seal">T&amp;S</div>
         </div>
         <div class="flip-hint">Month</div>
       </div>
 
-      <!-- YEAR -->
       <div style="text-align:center;">
         <div class="scroll-card" onclick="this.classList.toggle('opened')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('opened')" aria-label="Reveal Year">
           <div class="scroll-roller"></div>
-          <div class="scroll-paper">
-            <div class="scroll-text" style="font-size:clamp(20px, 7vw, 46px);">2026</div>
-          </div>
+          <div class="scroll-paper"><div class="scroll-text" style="font-size:clamp(20px, 7vw, 46px);">2026</div></div>
           <div class="scroll-roller"></div>
           <div class="wax-seal">T&amp;S</div>
         </div>
@@ -741,7 +746,6 @@ body{
   <section class="reveal-section" style="text-align:center;padding:56px 24px;">
     <p class="reveal-child reveal-delay-1 tagline" style="color:var(--gold);margin-bottom:8px;">Counting down to forever</p>
     <h2 class="reveal-child reveal-delay-2" style="font-family:'Cinzel',serif;font-size:clamp(20px,4vw,32px);color:var(--dark);margin-bottom:36px;">Our Wedding Day</h2>
-    
     <div class="reveal-child reveal-delay-3 cinematic-timeline-wrapper">
       <div class="countdown-label">TODAY</div>
       <div class="cinematic-timeline">
@@ -750,7 +754,6 @@ body{
       </div>
       <div class="countdown-label">WEDDING DAY</div>
     </div>
-    
     <div class="reveal-child reveal-delay-4">
       <div class="days-remaining" id="days-remaining"></div>
       <p style="margin-top:18px;font-style:italic;font-size:16px;color:var(--brown);">Every second brings us closer to forever ♡</p>
@@ -787,7 +790,6 @@ body{
     <p class="reveal-child reveal-delay-3" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,2.5vw,17px);color:var(--brown);">26 October 2026 &nbsp;·&nbsp; The Nile Ritz Carlton, Cairo</p>
 
     <div class="reveal-child reveal-delay-4 program-manuscript">
-
       <svg style="position:absolute;top:8px;right:8px;opacity:.4" width="28" height="28" viewBox="0 0 28 28"><path d="M28 0 L28 28 L0 28" fill="none" stroke="#b8860b" stroke-width="1"/><circle cx="28" cy="28" r="3" fill="#b8860b" opacity=".6"/></svg>
       <svg style="position:absolute;bottom:8px;left:8px;opacity:.4" width="28" height="28" viewBox="0 0 28 28"><path d="M0 28 L0 0 L28 0" fill="none" stroke="#b8860b" stroke-width="1"/><circle cx="0" cy="0" r="3" fill="#b8860b" opacity=".6"/></svg>
 
@@ -799,7 +801,6 @@ body{
           <div class="prog-desc">Guests are welcomed into the Grand Ballroom. Soft oud fills the air as champagne is passed and candles are lit.</div>
         </div>
       </div>
-
       <div class="prog-entry">
         <div class="prog-time-col"><span class="prog-hour">7:30</span><span class="prog-period">PM</span></div>
         <div class="prog-thread-col"><div class="prog-jewel"></div><div class="prog-thread"></div></div>
@@ -808,7 +809,6 @@ body{
           <div class="prog-desc">Talia and Seif exchange their vows and are joined in marriage before those they hold most dear.</div>
         </div>
       </div>
-
       <div class="prog-candle-row">
         <div class="prog-candle-line"></div>
         <div class="prog-candle"></div>
@@ -816,7 +816,6 @@ body{
         <div class="prog-candle"></div>
         <div class="prog-candle-line"></div>
       </div>
-
       <div class="prog-entry">
         <div class="prog-time-col"><span class="prog-hour">8:15</span><span class="prog-period">PM</span></div>
         <div class="prog-thread-col"><div class="prog-jewel"></div><div class="prog-thread"></div></div>
@@ -825,7 +824,6 @@ body{
           <div class="prog-desc">Glasses raised. Words spoken from the heart. The first toast to a lifetime of shared mornings.</div>
         </div>
       </div>
-
       <div class="prog-entry">
         <div class="prog-time-col"><span class="prog-hour">9:00</span><span class="prog-period">PM</span></div>
         <div class="prog-thread-col"><div class="prog-jewel"></div><div class="prog-thread"></div></div>
@@ -834,7 +832,6 @@ body{
           <div class="prog-desc">A lavish feast laid before you. Linger long over every course, for tonight there is nowhere else to be.</div>
         </div>
       </div>
-
       <div class="prog-entry">
         <div class="prog-time-col"><span class="prog-hour">10:30</span><span class="prog-period">PM</span></div>
         <div class="prog-thread-col"><div class="prog-jewel"></div><div class="prog-thread"></div></div>
@@ -843,7 +840,6 @@ body{
           <div class="prog-desc">The couple takes the floor. Then so does everyone else. Dance until the chandeliers blur.</div>
         </div>
       </div>
-
       <div class="prog-entry">
         <div class="prog-time-col"><span class="prog-hour">11:30</span><span class="prog-period">PM</span></div>
         <div class="prog-thread-col"><div class="prog-jewel"></div><div class="prog-thread" style="background:transparent;"></div></div>
@@ -852,7 +848,6 @@ body{
           <div class="prog-desc">The evening draws to its sweet close. A final memory made together, and a night none shall forget.</div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -866,21 +861,14 @@ body{
 
     <div class="reveal-child reveal-delay-4 wardrobe-shell" id="wardrobe" onclick="toggleWardrobe()" role="button" tabindex="0" aria-label="Open wardrobe to reveal dress code" onkeydown="if(event.key==='Enter'||event.key===' ')toggleWardrobe()">
 
-      <!-- ── INTERIOR (revealed when open) ── -->
       <div class="wardrobe-interior">
         <div class="wi-rod"></div>
-
-        <!-- GENTLEMAN -->
         <div class="wi-panel">
           <div class="wi-figure-wrap">
             <div class="wi-hanger">
-              <svg width="60" height="22" viewBox="0 0 60 22" fill="none">
-                <path d="M30 4 Q30 0 34 0 Q38 0 38 4 Q38 7 30 10 Q22 7 22 4 Q22 0 26 0 Q30 0 30 4Z" fill="none" stroke="#b8860b" stroke-width="1.2"/>
-                <path d="M30 10 L5 20 Q3 21 2 21 L58 21 Q57 21 55 20 Z" fill="none" stroke="#b8860b" stroke-width="1.2"/>
-              </svg>
+              <svg width="60" height="22" viewBox="0 0 60 22" fill="none"><path d="M30 4 Q30 0 34 0 Q38 0 38 4 Q38 7 30 10 Q22 7 22 4 Q22 0 26 0 Q30 0 30 4Z" fill="none" stroke="#b8860b" stroke-width="1.2"/><path d="M30 10 L5 20 Q3 21 2 21 L58 21 Q57 21 55 20 Z" fill="none" stroke="#b8860b" stroke-width="1.2"/></svg>
             </div>
             <div class="wi-figure">
-              <!-- Gentleman SVG — Black Tuxedo with Bowtie -->
               <svg width="100" height="175" viewBox="0 0 100 175" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="50" cy="16" rx="10" ry="12" fill="none" stroke="#b8860b" stroke-width="1.2"/>
                 <path d="M40 10 Q50 6 60 10" fill="none" stroke="#b8860b" stroke-width="1"/>
@@ -922,17 +910,12 @@ body{
           </div>
         </div>
 
-        <!-- LADY -->
         <div class="wi-panel">
           <div class="wi-figure-wrap">
             <div class="wi-hanger">
-              <svg width="60" height="22" viewBox="0 0 60 22" fill="none">
-                <path d="M30 4 Q30 0 34 0 Q38 0 38 4 Q38 7 30 10 Q22 7 22 4 Q22 0 26 0 Q30 0 30 4Z" fill="none" stroke="#b8860b" stroke-width="1.2"/>
-                <path d="M30 10 L5 20 Q3 21 2 21 L58 21 Q57 21 55 20 Z" fill="none" stroke="#b8860b" stroke-width="1.2"/>
-              </svg>
+              <svg width="60" height="22" viewBox="0 0 60 22" fill="none"><path d="M30 4 Q30 0 34 0 Q38 0 38 4 Q38 7 30 10 Q22 7 22 4 Q22 0 26 0 Q30 0 30 4Z" fill="none" stroke="#b8860b" stroke-width="1.2"/><path d="M30 10 L5 20 Q3 21 2 21 L58 21 Q57 21 55 20 Z" fill="none" stroke="#b8860b" stroke-width="1.2"/></svg>
             </div>
             <div class="wi-figure">
-              <!-- Lady SVG — Cute Tiered Ruffle Dress (inspired by ref) -->
               <svg width="100" height="175" viewBox="0 0 100 175" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="50" cy="14" rx="9" ry="11" fill="none" stroke="#b8860b" stroke-width="1.2"/>
                 <path d="M41 9 Q43 3 50 3 Q57 3 59 9" fill="none" stroke="#b8860b" stroke-width="1"/>
@@ -983,22 +966,15 @@ body{
           </div>
         </div>
 
-        <!-- footer note -->
         <div class="wi-footer">
           <span class="wi-footer-text">✦ &nbsp; Please do not wear white or ivory &nbsp; ✦</span>
         </div>
       </div>
 
-      <!-- ── CLOSED FACE (the two doors) ── -->
       <div class="wardrobe-closed" id="wardrobe-doors">
-        <div class="wc-door-left" id="wc-door-l">
-          <div class="wc-knob-left"></div>
-        </div>
+        <div class="wc-door-left" id="wc-door-l"><div class="wc-knob-left"></div></div>
         <div class="wc-seam"></div>
-        <div class="wc-door-right" id="wc-door-r">
-          <div class="wc-knob-right"></div>
-        </div>
-        <!-- centre monogram -->
+        <div class="wc-door-right" id="wc-door-r"><div class="wc-knob-right"></div></div>
         <div class="wc-monogram">
           <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
             <circle cx="32" cy="32" r="28" stroke="#b8860b" stroke-width=".8" opacity=".4"/>
@@ -1013,7 +989,7 @@ body{
 
     <div class="wc-hint reveal-child reveal-delay-4" style="margin-top:14px;">✦ &nbsp; Click to open &nbsp; ✦</div>
 
-    <!-- ── NEW ELEGANT COLOR PALETTE ── -->
+    <!-- ── ELEGANT COLOR PALETTE ── -->
     <div id="color-palette" class="color-palette-wrap">
       <svg width="120" height="24" viewBox="0 0 120 24" style="margin-bottom:24px;opacity:.6;">
         <line x1="0" y1="12" x2="40" y2="12" stroke="#b8860b" stroke-width=".8"/>
@@ -1023,12 +999,12 @@ body{
       <p class="palette-title">Our Evening Palette</p>
       <div class="palette-swatches">
         <div class="swatch-item">
-          <div class="swatch-circle" style="background:#1a1008;"></div>
-          <span class="swatch-label">Black</span>
+          <div class="swatch-circle" style="background:#F7E7CE;"></div>
+          <span class="swatch-label">Champagne</span>
         </div>
         <div class="swatch-item">
-          <div class="swatch-circle" style="background:#2c1a00;"></div>
-          <span class="swatch-label">Dark Brown</span>
+          <div class="swatch-circle" style="background:#045F52;"></div>
+          <span class="swatch-label">Emerald</span>
         </div>
         <div class="swatch-item">
           <div class="swatch-circle swatch-gold" style="background:linear-gradient(135deg,#f5e2a0,#d4a843,#b8860b);"></div>
@@ -1267,7 +1243,6 @@ function toggleWardrobe(){
   const isOpen = w.classList.contains('open');
 
   if(isOpen){
-    // Close
     const dl = document.getElementById('wc-door-l');
     const dr = document.getElementById('wc-door-r');
     dl.style.transition = 'transform .7s cubic-bezier(.4,0,.2,1)';
@@ -1277,7 +1252,6 @@ function toggleWardrobe(){
     w.classList.remove('open');
     p.classList.remove('palette-visible');
   } else {
-    // Open
     const dl = document.getElementById('wc-door-l');
     const dr = document.getElementById('wc-door-r');
     dl.style.transition = '';
